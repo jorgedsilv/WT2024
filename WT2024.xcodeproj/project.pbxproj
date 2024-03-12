@@ -16,6 +16,8 @@
 		CF5190722BA0B5D3000D3CDA /* WT2024UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190712BA0B5D3000D3CDA /* WT2024UITestsLaunchTests.swift */; };
 		CF5190822BA0BB11000D3CDA /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190812BA0BB11000D3CDA /* NetworkRequest.swift */; };
 		CF5190852BA0BB8F000D3CDA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190842BA0BB8F000D3CDA /* Constants.swift */; };
+		CF5190892BA0BCD6000D3CDA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190882BA0BCD6000D3CDA /* Article.swift */; };
+		CF51908C2BA0BF7A000D3CDA /* ArticleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CF5190712BA0B5D3000D3CDA /* WT2024UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WT2024UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CF5190812BA0BB11000D3CDA /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		CF5190842BA0BB8F000D3CDA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CF5190882BA0BCD6000D3CDA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +103,14 @@
 		CF51904D2BA0B5D1000D3CDA /* WT2024 */ = {
 			isa = PBXGroup;
 			children = (
-				CF5190832BA0BB67000D3CDA /* Utils */,
-				CF5190802BA0BAFC000D3CDA /* Network */,
 				CF51904E2BA0B5D1000D3CDA /* AppDelegate.swift */,
-				CF5190502BA0B5D1000D3CDA /* SceneDelegate.swift */,
-				CF5190522BA0B5D1000D3CDA /* ViewController.swift */,
 				CF5190572BA0B5D2000D3CDA /* Assets.xcassets */,
+				CF5190862BA0BC37000D3CDA /* Controllers */,
 				CF51905C2BA0B5D2000D3CDA /* Info.plist */,
+				CF5190872BA0BC9C000D3CDA /* Model */,
+				CF5190802BA0BAFC000D3CDA /* Network */,
+				CF5190502BA0B5D1000D3CDA /* SceneDelegate.swift */,
+				CF5190832BA0BB67000D3CDA /* Utils */,
 			);
 			path = WT2024;
 			sourceTree = "<group>";
@@ -141,6 +146,31 @@
 				CF5190842BA0BB8F000D3CDA /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CF5190862BA0BC37000D3CDA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF51908A2BA0BF61000D3CDA /* Cells */,
+				CF5190522BA0B5D1000D3CDA /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CF5190872BA0BC9C000D3CDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF5190882BA0BCD6000D3CDA /* Article.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF51908A2BA0BF61000D3CDA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5190852BA0BB8F000D3CDA /* Constants.swift in Sources */,
+				CF51908C2BA0BF7A000D3CDA /* ArticleViewCell.swift in Sources */,
 				CF5190532BA0B5D1000D3CDA /* ViewController.swift in Sources */,
+				CF5190892BA0BCD6000D3CDA /* Article.swift in Sources */,
 				CF51904F2BA0B5D1000D3CDA /* AppDelegate.swift in Sources */,
 				CF5190822BA0BB11000D3CDA /* NetworkRequest.swift in Sources */,
 				CF5190512BA0B5D1000D3CDA /* SceneDelegate.swift in Sources */,

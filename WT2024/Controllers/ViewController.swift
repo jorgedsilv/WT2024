@@ -7,15 +7,19 @@
 
 import UIKit
 
+// Main – no storyboard
+// Also the article
 class ViewController: UIViewController {
 
+    // MARK: - Properties -
+    
+    // MARK: - UI Elements -
+    
+    // MARK: - Methods -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        NSLog("Hello")
     }
-
 
 }
 
