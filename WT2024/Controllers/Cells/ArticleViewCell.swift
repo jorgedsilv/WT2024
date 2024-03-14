@@ -15,10 +15,21 @@ class ArticleViewCell: UICollectionViewCell {
     
     // MARK: - UI Elements -
     
+    private let labelStack: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.alignment = .leading
+        view.distribution = .fill
+        view.spacing = 6
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let title: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -28,6 +39,7 @@ class ArticleViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -38,8 +50,21 @@ class ArticleViewCell: UICollectionViewCell {
         label.textColor = .gray
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textAlignment = .left
+        label.numberOfLines = 8
+        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let chevron: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .none
+        imageView.tintColor = .gray
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let config = UIImage.SymbolConfiguration(font: .preferredFont(forTextStyle: .body))
+        imageView.image = UIImage(systemName: "chevron.forward", withConfiguration: config)
+        return imageView
     }()
     
     // MARK: - Methods -
@@ -55,27 +80,27 @@ class ArticleViewCell: UICollectionViewCell {
     }
     
     func setupViews() {
-        self.addSubview(title)
-        self.addSubview(author)
-        self.addSubview(body)
+        
+        self.addSubview(self.labelStack)
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: self.topAnchor),
-            title.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            title.rightAnchor.constraint(equalTo: self.rightAnchor),
-            title.leftAnchor.constraint(equalTo: self.leftAnchor)
+            self.labelStack.topAnchor.constraint(equalTo: self.topAnchor),
+            self.labelStack.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.labelStack.rightAnchor.constraint(equalTo: self.rightAnchor),
+            self.labelStack.leftAnchor.constraint(equalTo: self.leftAnchor)
         ])
         
-        NSLayoutConstraint.activate([
-            author.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 12),
-            author.rightAnchor.constraint(equalTo: title.rightAnchor),
-            author.leftAnchor.constraint(equalTo: title.leftAnchor)
-        ])
+        labelStack.addArrangedSubview(title)
+        labelStack.addArrangedSubview(author)
+        labelStack.addArrangedSubview(body)
+        
+        self.addSubview(chevron)
         
         NSLayoutConstraint.activate([
-            body.topAnchor.constraint(equalTo: author.bottomAnchor, constant: 12),
-            body.rightAnchor.constraint(equalTo: author.rightAnchor),
-            body.leftAnchor.constraint(equalTo: author.leftAnchor)
+            chevron.topAnchor.constraint(equalTo: labelStack.topAnchor,constant: 10),
+            chevron.trailingAnchor.constraint(equalTo: labelStack.trailingAnchor),
+            chevron.widthAnchor.constraint(equalToConstant: 20),
+            chevron.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     

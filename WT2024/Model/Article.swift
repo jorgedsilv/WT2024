@@ -13,7 +13,7 @@ struct Articles: Codable {
 }
 
 // MARK: - Item
-struct Article: Identifiable, Codable {
+struct Article: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,6 +36,10 @@ struct Article: Identifiable, Codable {
     let body: String?
     let limit: String?
     let page: String?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
