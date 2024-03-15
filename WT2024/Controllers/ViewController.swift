@@ -66,6 +66,17 @@ class ViewController: UIViewController {
                 self.applySnapshot()
             }
         }
+        
+//        Datasource.shared.getArticles1_0() {
+//            //DispatchQueue.main.async {
+//                NSLog("getArticles1_0 :: \(Datasource.shared.articles.count) :: \(Datasource.shared.articlesError)")
+//                self.article = Datasource.shared.articles
+//            //}
+//            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+//                self.applySnapshot()
+//            }
+//        }
     }
 }
 

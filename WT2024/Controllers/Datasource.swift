@@ -35,9 +35,37 @@ class Datasource {
                     NSLog("Datasource :: getArticles1_1 :: \(response.count)")
                     
                     self.articlesError = false
-                case let .error(_):
+                case let .error(error):
                     
-                    NSLog("Datasource :: getArticles1_1 :: error")
+                    NSLog("Datasource :: getArticles1_1 :: error = \(error)")
+                    self.articles = []
+                    self.articlesError = true
+                }
+                completion()
+            }
+        }
+    }
+    
+    func getArticles1_0(completion: @escaping() -> Void) {
+        
+        let url = Constants.mobileArticle1_0
+        
+        NSLog("getArticles1_0 :: \(url)")
+        
+        DispatchQueue.global().async {
+            self.getArticle(url: url) { (result) in
+                
+                switch result {
+                case let .success(response):
+                    
+                    self.articles = response
+                    
+                    NSLog("Datasource :: getArticles1_0 :: \(response.count)")
+                    
+                    self.articlesError = false
+                case let .error(error):
+                    
+                    NSLog("Datasource :: getArticles1_0 :: error = \(error)")
                     self.articles = []
                     self.articlesError = true
                 }

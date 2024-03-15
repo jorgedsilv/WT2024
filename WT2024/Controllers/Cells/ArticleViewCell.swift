@@ -11,6 +11,8 @@ class ArticleViewCell: UICollectionViewCell {
     
     // MARK: - Properties -
     
+    private let chevronSize: CGSize = CGSize(width: 14, height: 14)
+    
     var article: Article?
     
     // MARK: - UI Elements -
@@ -67,6 +69,16 @@ class ArticleViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let published: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.font = UIFont.preferredFont(forTextStyle: .callout)
+        label.adjustsFontForContentSizeCategory = true
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - Methods -
     
     override init(frame: CGRect) {
@@ -92,15 +104,16 @@ class ArticleViewCell: UICollectionViewCell {
         
         labelStack.addArrangedSubview(title)
         labelStack.addArrangedSubview(author)
+        labelStack.addArrangedSubview(published)
         labelStack.addArrangedSubview(body)
         
         self.addSubview(chevron)
         
         NSLayoutConstraint.activate([
-            chevron.topAnchor.constraint(equalTo: labelStack.topAnchor,constant: 10),
             chevron.trailingAnchor.constraint(equalTo: labelStack.trailingAnchor),
-            chevron.widthAnchor.constraint(equalToConstant: 20),
-            chevron.heightAnchor.constraint(equalToConstant: 20)
+            chevron.centerYAnchor.constraint(equalTo: labelStack.centerYAnchor),
+            chevron.widthAnchor.constraint(equalToConstant: chevronSize.width),
+            chevron.heightAnchor.constraint(equalToConstant: chevronSize.height)
         ])
     }
     
@@ -110,7 +123,8 @@ class ArticleViewCell: UICollectionViewCell {
         
         guard let title = article.title,
               let author = article.author,
-              let summary = article.summary
+              let summary = article.summary,
+              let publishedAt = article.publishedAt
         else {
             return
         }
@@ -118,5 +132,30 @@ class ArticleViewCell: UICollectionViewCell {
         self.title.text = title
         self.author.text = author
         self.body.text = summary
+        self.published.text = getDate(publishedAt: publishedAt)
+        
+    }
+    
+    private func getDate(publishedAt: String) -> String {
+        
+        // https://sarunw.com/posts/how-to-parse-iso8601-date-in-swift/#iso-8601-with-fractional-seconds
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.insert(.withFractionalSeconds)
+        let date = formatter.date(from: publishedAt)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "dd-MMMM-yyyy"
+        if let languageCode = Locale.current.language.languageCode {
+            dateFormatter.locale = Locale(identifier: languageCode.identifier)
+        }
+        let published = dateFormatter.string(from: date!)
+
+        return published
+        
+//        let ofString: String = " "+String(localized: "of")+" "
+//        let newDate = published.replacingOccurrences(of: "-", with: ofString)
+//        
+//        return newDate
     }
 }

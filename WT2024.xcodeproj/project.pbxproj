@@ -19,6 +19,7 @@
 		CF5190892BA0BCD6000D3CDA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190882BA0BCD6000D3CDA /* Article.swift */; };
 		CF51908C2BA0BF7A000D3CDA /* ArticleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */; };
 		CF51908E2BA0C93D000D3CDA /* Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51908D2BA0C93D000D3CDA /* Datasource.swift */; };
+		CF5190922BA4A5F2000D3CDA /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CF5190912BA4A5F2000D3CDA /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		CF5190882BA0BCD6000D3CDA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewCell.swift; sourceTree = "<group>"; };
 		CF51908D2BA0C93D000D3CDA /* Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datasource.swift; sourceTree = "<group>"; };
+		CF5190912BA4A5F2000D3CDA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				CF5190802BA0BAFC000D3CDA /* Network */,
 				CF5190502BA0B5D1000D3CDA /* SceneDelegate.swift */,
 				CF5190832BA0BB67000D3CDA /* Utils */,
+				CF5190912BA4A5F2000D3CDA /* Localizable.xcstrings */,
 			);
 			path = WT2024;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-PT",
 			);
 			mainGroup = CF5190422BA0B5D1000D3CDA;
 			productRefGroup = CF51904C2BA0B5D1000D3CDA /* Products */;
@@ -280,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5190922BA4A5F2000D3CDA /* Localizable.xcstrings in Resources */,
 				CF5190582BA0B5D2000D3CDA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
