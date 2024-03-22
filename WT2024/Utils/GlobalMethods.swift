@@ -22,10 +22,7 @@ func getDate(publishedAt: String) -> String {
     }
     let published = dateFormatter.string(from: date!)
 
-    return published
+    let newDate = published.replacingOccurrences(of: "-", with: " ")
     
-//        let ofString: String = " "+String(localized: "of")+" "
-//        let newDate = published.replacingOccurrences(of: "-", with: ofString)
-//
-//        return newDate
+    return newDate
 }

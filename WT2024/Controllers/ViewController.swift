@@ -146,47 +146,4 @@ extension ViewController {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         return UICollectionViewCompositionalLayout.list(using: config)
     }
-    
-    private func createLayout() -> UICollectionViewLayout {
-        
-        let layout = UICollectionViewCompositionalLayout {
-            (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            
-            self.createSection()
-        }
-        
-        /*let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 0
-        config.scrollDirection = .vertical
-        layout.configuration = config*/
-        
-        return layout
-    }
-    
-    private func createSection() -> NSCollectionLayoutSection{
-        
-        let itemFractionalSize: CGFloat = CGFloat(1)
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(itemFractionalSize),
-                                             heightDimension: .fractionalHeight(itemFractionalSize))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-        
-        let groupHeight: CGFloat = CGFloat(120)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(groupHeight))
-                                               //heightDimension: .fractionalHeight(0.1))
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                         subitems: [item])
-
-        //let spacing = CGFloat(50)
-        //group.interItemSpacing = .fixed(spacing)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return section
-    }
 }
