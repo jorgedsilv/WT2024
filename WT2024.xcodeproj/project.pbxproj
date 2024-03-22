@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0B71572BADEDD7008EF4FB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B71562BADEDD7008EF4FB /* Comment.swift */; };
 		CF51904F2BA0B5D1000D3CDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51904E2BA0B5D1000D3CDA /* AppDelegate.swift */; };
 		CF5190512BA0B5D1000D3CDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190502BA0B5D1000D3CDA /* SceneDelegate.swift */; };
 		CF5190532BA0B5D1000D3CDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5190522BA0B5D1000D3CDA /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF0B71562BADEDD7008EF4FB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CF51904B2BA0B5D1000D3CDA /* WT2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WT2024.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF51904E2BA0B5D1000D3CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF5190502BA0B5D1000D3CDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				CF5190882BA0BCD6000D3CDA /* Article.swift */,
+				CF0B71562BADEDD7008EF4FB /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				CF9AD0F52BAC7A3F00536C3F /* ArticleDetailCell.swift in Sources */,
 				CF5190892BA0BCD6000D3CDA /* Article.swift in Sources */,
 				CF51904F2BA0B5D1000D3CDA /* AppDelegate.swift in Sources */,
+				CF0B71572BADEDD7008EF4FB /* Comment.swift in Sources */,
 				CF5190822BA0BB11000D3CDA /* NetworkRequest.swift in Sources */,
 				CF51908E2BA0C93D000D3CDA /* Datasource.swift in Sources */,
 				CF5190512BA0B5D1000D3CDA /* SceneDelegate.swift in Sources */,

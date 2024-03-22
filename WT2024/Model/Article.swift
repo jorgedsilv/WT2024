@@ -7,12 +7,15 @@
 
 import Foundation
 
+// MARK: - Articles –
+
 struct Articles: Codable {
     let items: [Article]
     let count: Int
 }
 
-// MARK: - Item
+// MARK: - Article – 
+
 struct Article: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
@@ -57,6 +60,8 @@ struct Article: Hashable, Codable {
         self.avatar = try container.decodeIfPresent(String.self, forKey: .avatar) ?? ""
     }
 }
+
+// MARK: - ArticleElem –
 
 // used for mobileArticle2_0
 typealias ArticleElem = [Article]
