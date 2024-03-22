@@ -14,6 +14,10 @@ struct Constants {
     static let mobileArticle1_1 = "https://5bb1cd166418d70014071c8e.mockapi.io/mobile/1-1/articles"
     
     static let mobileArticle1_0 = "https://5badefb9a65be000146763a4.mockapi.io/mobile/1-0/articles"
+
+    static let mobileArticle2_0 = "https://5bb1d1e66418d70014071c9c.mockapi.io/mobile/2-0/articles"
+    
+    static let mobileArticle2_0_comments = "https://5bb1d1e66418d70014071c9c.mockapi.io/mobile/2-0/articles/{%@}/comments"
 }
 
 // MARK: - Enums

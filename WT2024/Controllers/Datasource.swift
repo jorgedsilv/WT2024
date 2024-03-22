@@ -74,8 +74,32 @@ class Datasource {
         }
     }
     
-    func mapItemsToArticles() {
+    func getArticles2_0(completion: @escaping () -> Void) {
         
+        let url = Constants.mobileArticle2_0
+        
+        NSLog("getArticles2_0 :: \(url)")
+        
+        DispatchQueue.global().async {
+            self.getArticle2_0(url: url) { (result) in
+                
+                switch result {
+                case let .success(response):
+                    
+                    self.articles = response
+                    
+                    NSLog("Datasource :: getArticles2_0 :: \(response)")
+                    
+                    self.articlesError = false
+                case let .error(error):
+                    
+                    NSLog("Datasource :: getArticles2_0 :: error = \(error)")
+                    self.articles = []
+                    self.articlesError = true
+                }
+                completion()
+            }
+        }
     }
     
     private func getArticle(url: String, completionHandler: @escaping (Result<[Article]>) -> Void) {
@@ -102,6 +126,35 @@ class Datasource {
             case let .error(error, _):
                 completionHandler(.error(error))
             }
+        }
+        
+    }
+    
+    private func getArticle2_0(url: String, completionHandler: @escaping (Result<[Article]>) -> Void) {
+        
+        DispatchQueue.global().async {
+            
+            NetworkRequest.shared.get(url: url) { (result) in
+                
+                switch result {
+                case let .success(data):
+                    
+                    do {
+                        let dataSet = try JSONDecoder().decode(ArticleElem.self, from: data)
+                        
+                        NSLog("Datasource :: getArticles 2.0 :: successful got articles")
+                        completionHandler(.success(dataSet))
+                        
+                    } catch let jsonErr {
+                        NSLog("Datasource :: getArticles 2.0 :: Data set empty")
+                        completionHandler(.error(jsonErr.localizedDescription))
+                    }
+                    
+                case let .error(error, _):
+                    completionHandler(.error(error))
+                }
+            }
+            
         }
         
     }

@@ -25,6 +25,7 @@ struct Article: Hashable, Codable {
         case body
         case limit
         case page
+        case avatar
     }
     
     let id: String?
@@ -36,6 +37,7 @@ struct Article: Hashable, Codable {
     let body: String?
     let limit: String?
     let page: String?
+    let avatar: String?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -52,5 +54,9 @@ struct Article: Hashable, Codable {
         self.body = try container.decodeIfPresent(String.self, forKey: .body) ?? ""
         self.limit = try container.decodeIfPresent(String.self, forKey: .limit) ?? ""
         self.page = try container.decodeIfPresent(String.self, forKey: .page) ?? ""
+        self.avatar = try container.decodeIfPresent(String.self, forKey: .avatar) ?? ""
     }
 }
+
+// used for mobileArticle2_0
+typealias ArticleElem = [Article]
