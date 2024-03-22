@@ -20,6 +20,9 @@
 		CF51908C2BA0BF7A000D3CDA /* ArticleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */; };
 		CF51908E2BA0C93D000D3CDA /* Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51908D2BA0C93D000D3CDA /* Datasource.swift */; };
 		CF5190922BA4A5F2000D3CDA /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CF5190912BA4A5F2000D3CDA /* Localizable.xcstrings */; };
+		CF9AD0F52BAC7A3F00536C3F /* ArticleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AD0F42BAC7A3F00536C3F /* ArticleDetailCell.swift */; };
+		CF9AD0F72BAC7FBA00536C3F /* GlobalMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AD0F62BAC7FBA00536C3F /* GlobalMethods.swift */; };
+		CF9AD0F92BAC807300536C3F /* ArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AD0F82BAC807300536C3F /* ArticleDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewCell.swift; sourceTree = "<group>"; };
 		CF51908D2BA0C93D000D3CDA /* Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datasource.swift; sourceTree = "<group>"; };
 		CF5190912BA4A5F2000D3CDA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		CF9AD0F42BAC7A3F00536C3F /* ArticleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailCell.swift; sourceTree = "<group>"; };
+		CF9AD0F62BAC7FBA00536C3F /* GlobalMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMethods.swift; sourceTree = "<group>"; };
+		CF9AD0F82BAC807300536C3F /* ArticleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArticleDetailController.swift; path = WT2024/Controllers/ArticleDetailController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				CF5190842BA0BB8F000D3CDA /* Constants.swift */,
+				CF9AD0F62BAC7FBA00536C3F /* GlobalMethods.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -175,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				CF51908B2BA0BF7A000D3CDA /* ArticleViewCell.swift */,
+				CF9AD0F42BAC7A3F00536C3F /* ArticleDetailCell.swift */,
+				CF9AD0F82BAC807300536C3F /* ArticleDetailController.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -313,11 +322,14 @@
 				CF5190852BA0BB8F000D3CDA /* Constants.swift in Sources */,
 				CF51908C2BA0BF7A000D3CDA /* ArticleViewCell.swift in Sources */,
 				CF5190532BA0B5D1000D3CDA /* ViewController.swift in Sources */,
+				CF9AD0F72BAC7FBA00536C3F /* GlobalMethods.swift in Sources */,
+				CF9AD0F52BAC7A3F00536C3F /* ArticleDetailCell.swift in Sources */,
 				CF5190892BA0BCD6000D3CDA /* Article.swift in Sources */,
 				CF51904F2BA0B5D1000D3CDA /* AppDelegate.swift in Sources */,
 				CF5190822BA0BB11000D3CDA /* NetworkRequest.swift in Sources */,
 				CF51908E2BA0C93D000D3CDA /* Datasource.swift in Sources */,
 				CF5190512BA0B5D1000D3CDA /* SceneDelegate.swift in Sources */,
+				CF9AD0F92BAC807300536C3F /* ArticleDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

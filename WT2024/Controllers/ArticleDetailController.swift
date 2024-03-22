@@ -1,16 +1,16 @@
 //
-//  ViewController.swift
+//  ArticleDetailController.swift
 //  WT2024
 //
-//  Created by Jorge Silva on 12/03/2024.
+//  Created by Jorge Silva on 21/03/2024.
 //
 
 import UIKit
 
-// Main – no storyboard
-// Also the article
-class ViewController: UIViewController {
-
+class ArticleDetailController: UIViewController {
+    
+    // MARK: - Properties -
+    
     enum SectionEnum {
         case main
     }
@@ -19,15 +19,20 @@ class ViewController: UIViewController {
     
     lazy var dataSource = makeDataSource()
     
-    var article: [Article] = []
+    var article: Article? {
+        didSet {
+            if let article = article {
+                DispatchQueue.main.async {
+                    self.applySnapshot(article: article)
+                }
+            }
+        }
+    }
     
     // MARK: - UI Elements -
     
     lazy var collection: UICollectionView = {
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
-        //let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
-        //collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.clipsToBounds = false
         return collectionView
@@ -37,11 +42,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupCollection()
-        getData()
-    }
 
+        setupCollection()
+    }
+    
     func setupCollection() {
         self.view.addSubview(collection)
         
@@ -54,68 +58,28 @@ class ViewController: UIViewController {
         
         self.collection.delegate = self
     }
-    
-    func getData() {
-        Datasource.shared.getArticles1_1() {
-            //DispatchQueue.main.async {
-                NSLog("getArticles1_1 :: \(Datasource.shared.articles.count) :: \(Datasource.shared.articlesError)")
-                self.article = Datasource.shared.articles
-            //}
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-                self.applySnapshot()
-            }
-        }
-        
-//        Datasource.shared.getArticles1_0() {
-//            //DispatchQueue.main.async {
-//                NSLog("getArticles1_0 :: \(Datasource.shared.articles.count) :: \(Datasource.shared.articlesError)")
-//                self.article = Datasource.shared.articles
-//            //}
-//            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-//                self.applySnapshot()
-//            }
-//        }
-    }
 }
 
 // MARK: - UICollectionViewDelegate -
 
-extension ViewController: UICollectionViewDelegate {
+extension ArticleDetailController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let itemIdentifier = dataSource.itemIdentifier(for: indexPath) else {
-          return
-        }
-        
-        let modal = ArticleDetailController()
-        modal.article = itemIdentifier
-        //delegate?
-        
-        DispatchQueue.main.async {
-            if let nav = self.navigationController {
-                nav.pushViewController(modal, animated: true)
-            } else {
-                NSLog("ViewController :: didSelect :: nav is nil")
-            }
-        }
+    func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
+        return true
     }
     
 }
 
-
 // MARK:  - DataSource -
 
-extension ViewController {
+extension ArticleDetailController {
     
     func makeDataSource() -> UICollectionViewDiffableDataSource<SectionEnum, Article> {
         
-        let cellRegistration = UICollectionView.CellRegistration<ArticleViewCell, Article> {
-            (cell, indexPath, item) in
+        let cellRegistration = UICollectionView.CellRegistration<ArticleDetailCell, Article> {
+            (cell: ArticleDetailCell, indexPath: IndexPath, item: Article) in
             
-            cell.configureCell(article: item)
+            cell.article = item
         }
         
         let dataSource = UICollectionViewDiffableDataSource<SectionEnum, Article>(collectionView: collection) {
@@ -127,12 +91,12 @@ extension ViewController {
         return dataSource
     }
     
-    func applySnapshot() {
+    func applySnapshot(article: Article) {
         var snapshot = NSDiffableDataSourceSnapshot<SectionEnum, Article>()
         
         snapshot.appendSections([.main])
         
-        snapshot.appendItems(self.article, toSection: .main)
+        snapshot.appendItems([article], toSection: .main)
         
         dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -140,12 +104,7 @@ extension ViewController {
 
 // MARK: - Layout -
 
-extension ViewController {
-    
-    private func configureLayout() -> UICollectionViewLayout {
-        let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        return UICollectionViewCompositionalLayout.list(using: config)
-    }
+extension ArticleDetailController {
     
     private func createLayout() -> UICollectionViewLayout {
         
@@ -155,10 +114,10 @@ extension ViewController {
             self.createSection()
         }
         
-        /*let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 0
-        config.scrollDirection = .vertical
-        layout.configuration = config*/
+//        let config = UICollectionViewCompositionalLayoutConfiguration()
+//        config.interSectionSpacing = 0
+//        config.scrollDirection = .vertical
+//        layout.configuration = config
         
         return layout
     }
@@ -173,13 +132,13 @@ extension ViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
-        let groupHeight: CGFloat = CGFloat(120)
+        let groupHeight: CGFloat = CGFloat(1820)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .absolute(groupHeight))
-                                               //heightDimension: .fractionalHeight(0.1))
+                                               //heightDimension: .fractionalHeight(1.0))
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
                                                          subitems: [item])
 
         //let spacing = CGFloat(50)
@@ -189,4 +148,5 @@ extension ViewController {
         
         return section
     }
+    
 }
